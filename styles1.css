@@ -1,0 +1,97 @@
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('background.jpg') no-repeat center center/cover;
+    z-index: -1;
+}
+
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    text-shadow: 2px 2px 8px black;
+    z-index: 1;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.fireworks {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, yellow, transparent),
+                radial-gradient(circle, red, transparent);
+    animation: sparkle 1.5s infinite;
+    z-index: 0;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(0.8) translateX(-50%); opacity: 0.5; }
+    50% { transform: scale(1.5) translateX(-50%); opacity: 1; }
+}
+
+.balloons {
+    position: absolute;
+    bottom: -20%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    z-index: 1;
+}
+
+.balloon {
+    width: 40px;
+    height: 60px;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
+    animation: float 4s infinite ease-in-out;
+}
+
+.balloon:nth-child(2) {
+    background-color: yellow;
+    animation-delay: 0.5s;
+}
+
+.balloon:nth-child(3) {
+    background-color: blue;
+    animation-delay: 1s;
+}
+
+.balloon::after {
+    content: '';
+    width: 2px;
+    height: 20px;
+    background-color: white;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(100%) scale(1); }
+    50% { transform: translateY(-100%) scale(1.1); }
+}
