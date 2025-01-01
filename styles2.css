@@ -1,0 +1,76 @@
+/* Basic reset and styling */
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+h1 {
+    font-size: 6em; /* Default for desktop */
+    margin: 0;
+    text-shadow: 
+        0 0 5px #FF5733, 
+        0 0 10px #FF5733, 
+        0 0 15px #FF5733, 
+        0 0 20px #FF5733, 
+        0 0 30px #FF5733, 
+        0 0 40px #FF5733; /* Glowing effect */
+}
+
+.message {
+    font-size: 2em; /* Default for desktop */
+}
+
+/* Styling for the next clickable ball */
+.next-ball {
+    position: absolute;
+    bottom: 10%;
+    right: 10%; /* Position the ball in the bottom-right corner */
+    width: 80px;
+    height: 80px;
+    background-color: #FF5733;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 87, 51, 0.7);
+    animation: pulse 2s infinite ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.next-ball:hover {
+    background-color: #F1C40F;
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.8);
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.1);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 4em; /* Smaller font for mobile */
+    }
+    .message {
+        font-size: 1.5em; /* Adjust message size on mobile */
+    }
+}
