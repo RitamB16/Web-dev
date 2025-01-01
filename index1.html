@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Image Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: black;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .text-overlay {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: gold;
+      font-size: 2rem;
+      text-shadow: 2px 2px 5px black;
+      text-align: center;
+    }
+
+    .container .snow 
+{
+  position: absolute;
+  top: 0; /* Start the snow from the top of the container */
+  left: 0;
+  width: 100%; /* Cover the full width of the container */
+  height: 100%; /* Cover the full height of the container */
+  display: flex;
+  flex-wrap: wrap; /* Ensure snowflakes are distributed */
+  overflow: hidden
+}
+.container .snow span
+{
+    position: relative;
+    min-width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 100%;
+    margin: 0 1vw;
+    box-shadow: -100px 20px 5px #fff,
+    100px 20px 10px #fff;
+    animation: animateSnow 15s linear infinite;
+    animation-duration: calc(75s/ var(--i));
+}
+.container .snow span:nth-child(even)
+{
+    min-width: 10px;
+    height: 10px;
+}
+@keyframes animateSnow
+{
+    0%
+    {
+        transform: translateY(-10vh);
+    }
+    100%
+    {
+        transform: translateY(100vh);
+    }
+}
+    .click-area {
+      position: absolute;
+      width: 25%;
+      height: 25%;
+      top: 75%;
+      right:75%;
+      cursor: pointer;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img id="image" src="image1.jpg" alt="Interactive Image">
+    <div class="text-overlay" id="text">Pop your fav thing in this page</div>
+    <div class="snow">
+      <span style="--i:11;"></span>
+      <span style="--i:12;"></span>
+      <span style="--i:24;"></span>
+      <span style="--i:10;"></span>
+      <span style="--i:14;"></span>
+      <span style="--i:23;"></span>
+      <span style="--i:18;"></span>
+      <span style="--i:16;"></span>
+      <span style="--i:19;"></span>
+      <span style="--i:20;"></span>
+      <span style="--i:22;"></span>
+      <span style="--i:25;"></span>
+      <span style="--i:18;"></span>
+      <span style="--i:21;"></span>
+      <span style="--i:18;"></span>
+      <span style="--i:21;"></span>
+      <span style="--i:13;"></span>
+      <span style="--i:15;"></span>
+      <span style="--i:26;"></span>
+      <span style="--i:17;"></span>
+      <span style="--i:13;"></span>
+      <span style="--i:28;"></span>
+      <span style="--i:11;"></span>
+      <span style="--i:12;"></span>
+      <span style="--i:11;"></span>
+      <span style="--i:12;"></span>
+      <span style="--i:24;"></span>
+      <span style="--i:10;"></span>
+      <span style="--i:14;"></span>
+      <span style="--i:23;"></span>
+      <span style="--i:18;"></span>
+      <span style="--i:16;"></span>
+      <span style="--i:19;"></span>
+      <span style="--i:20;"></span>
+      <span style="--i:22;"></span>
+      <span style="--i:25;"></span>
+      <span style="--i:18;"></span>
+      <span style="--i:21;"></span>
+      <span style="--i:18;"></span>
+      <span style="--i:21;"></span>
+      <span style="--i:13;"></span>
+      <span style="--i:15;"></span>
+      <span style="--i:26;"></span>
+      <span style="--i:17;"></span>
+      <span style="--i:13;"></span>
+      <span style="--i:28;"></span>
+      <span style="--i:11;"></span>
+      <span style="--i:12;"></span>
+      <span style="--i:24;"></span>
+    </div>
+    <div class="click-area" onclick="changeImage()"></div>
+    <div id="additional-text" style="display: none; position: absolute; top: 60%; left: 40%; transform: translate(-50%, 0); color: rgb(168, 19, 205); font-style: italic;text-align: center; font-size: 1.5rem;">
+      <p>I Hope ,You Listen All Things In Video.For changing you dp that day i told ,'tumi ek ta valo kaj korecho!'</p>
+      <p>It is just Things nothing is serious just for Fun</p>
+      <p>Review & Rating  Dena</p>
+    </div>
+  
+  </div>
+
+  <script>
+    let currentImage = 1;
+
+    function changeImage() {
+      currentImage = currentImage === 1 ? 2 : 1;
+      document.getElementById("image").src = currentImage === 1 ? "image1.jpg" : "image2.jpg";
+      document.getElementById("text").innerText = currentImage === 1 ? 
+        "Click your fav thing in this page" : "Happy New Year Again!!";
+         // Show or hide the additional text based on the current image
+    const additionalText = document.getElementById("additional-text");
+    additionalText.style.display = currentImage === 2 ? "block" : "none";
+
+    }
+  </script>
+</body>
+</html>
