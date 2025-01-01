@@ -20,6 +20,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
 
     .container img {
@@ -40,56 +41,109 @@
       font-size: 2rem;
       text-shadow: 2px 2px 5px black;
       text-align: center;
+      padding: 0 10px;
     }
 
-    .container .snow 
-{
-  position: absolute;
-  top: 0; /* Start the snow from the top of the container */
-  left: 0;
-  width: 100%; /* Cover the full width of the container */
-  height: 100%; /* Cover the full height of the container */
-  display: flex;
-  flex-wrap: wrap; /* Ensure snowflakes are distributed */
-  overflow: hidden
-}
-.container .snow span
-{
-    position: relative;
-    min-width: 5px;
-    height: 5px;
-    background: #fff;
-    border-radius: 100%;
-    margin: 0 1vw;
-    box-shadow: -100px 20px 5px #fff,
-    100px 20px 10px #fff;
-    animation: animateSnow 15s linear infinite;
-    animation-duration: calc(75s/ var(--i));
-}
-.container .snow span:nth-child(even)
-{
-    min-width: 10px;
-    height: 10px;
-}
-@keyframes animateSnow
-{
-    0%
-    {
+    .container .snow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
+
+    .container .snow span {
+      position: relative;
+      min-width: 5px;
+      height: 5px;
+      background: #fff;
+      border-radius: 100%;
+      margin: 0 1vw;
+      box-shadow: -100px 20px 5px #fff,
+        100px 20px 10px #fff;
+      animation: animateSnow 15s linear infinite;
+      animation-duration: calc(75s / var(--i));
+    }
+
+    .container .snow span:nth-child(even) {
+      min-width: 10px;
+      height: 10px;
+    }
+
+    @keyframes animateSnow {
+      0% {
         transform: translateY(-10vh);
-    }
-    100%
-    {
+      }
+      100% {
         transform: translateY(100vh);
+      }
     }
-}
+
     .click-area {
       position: absolute;
       width: 25%;
       height: 25%;
       top: 75%;
-      right:75%;
+      right: 75%;
       cursor: pointer;
       z-index: 2;
+    }
+
+    #additional-text {
+      display: none;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgb(168, 19, 205);
+      font-style: italic;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .text-overlay {
+        font-size: 1.5rem;
+      }
+
+      .click-area {
+        width: 50%;
+        height: 50%;
+        top: 60%;
+        right: 60%;
+      }
+
+      #additional-text {
+        font-size: 1.2rem;
+        top: 70%;
+      }
+
+      .snow span {
+        animation-duration: calc(40s / var(--i));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .text-overlay {
+        font-size: 1rem;
+        top: 5%;
+      }
+
+      .click-area {
+        width: 60%;
+        height: 60%;
+        top: 55%;
+        right: 55%;
+      }
+
+      #additional-text {
+        font-size: 1rem;
+        top: 75%;
+      }
     }
   </style>
 </head>
@@ -149,12 +203,11 @@
       <span style="--i:24;"></span>
     </div>
     <div class="click-area" onclick="changeImage()"></div>
-    <div id="additional-text" style="display: none; position: absolute; top: 60%; left: 40%; transform: translate(-50%, 0); color: rgb(168, 19, 205); font-style: italic;text-align: center; font-size: 1.5rem;">
+    <div id="additional-text">
       <p>I Hope ,You Listen All Things In Video.For changing you dp that day i told ,'tumi ek ta valo kaj korecho!'</p>
       <p>It is just Things nothing is serious just for Fun</p>
       <p>Review & Rating  Dena</p>
     </div>
-  
   </div>
 
   <script>
